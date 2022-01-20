@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 这是一个指定的约束文件 -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+     namespace是命名空间，必须有值，自定义的唯一字符串
+     推荐使用：dao接口的全限定名称
+-->
+<mapper namespace="com.nowcoder.community.dao.DiscussPostMapper">
+
+<!--
+    private int id;
+    private String userId;
+    private String title;
+    private String Content;
+    private int type;
+    private int status;
+    private Date createTime;
+    private int commentCount;
+    private Double score;
+-->
+
+    <sql id="selectFields">
+        id, user_id, title, content, type, status, create_time, comment_count, score
+    </sql>
+
+<!--    public List<DiscussPost> selectDiscussPosts(int userId, int offset, int limit);-->
+    <select id="selectDiscussPosts" resultType="com.nowcoder.community.entity.DiscussPost">
+        select <include refid="selectFields"></include>
+        from discuss_post
+        where status != 2
+        <if test="userId>0">
+            and id=#{userId}
+        </if>
+        order by type desc, create_time desc
+        limit #{offset}, #{limit}
+    </select>
+
+<!--    public int selectPostNum(int userId);-->
+    <select id="selectPostNum" resultType="java.lang.Integer">
+        select count(id)
+        from discuss_post
+        where status != 2
+    </select>
+</mapper>
+
