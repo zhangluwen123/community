@@ -48,7 +48,6 @@ public class DiscussPostController {
                discussPosts.add(map);
            }
         }
-        //
         model.addAttribute("discussPosts", discussPosts);
         return "index"; //这是返回的视图index.html
     }
