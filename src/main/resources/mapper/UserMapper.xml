@@ -7,7 +7,7 @@
 <mapper namespace="com.nowcoder.community.dao.UserMapper">
 
     <sql id="insertFields">
-        username, password, salt, email, type, status, activation_code, header_url, create_time
+        (username, password, salt, email, type, status, activation_code, header_url, create_time)
     </sql>
 
     <sql id="selectFields">
@@ -29,9 +29,9 @@
         from user
         where email=#{email}
     </select>
-    <insert id="insertUser" parameterType="com.nowcoder.community.entity.User">
+    <insert id="insertUser" parameterType="com.nowcoder.community.entity.User" keyProperty="id">
         insert into user <include refid="insertFields"></include>
-        values (#{username}, #{password}, #{salt}, #{email}, #{type}, #{status}, #{activation_code}, #{header_url}, #{create_time})
+        values (#{username}, #{password}, #{salt}, #{email}, #{type}, #{status}, #{activationCode}, #{headerUrl}, #{createDate})
     </insert>
     <update id="updateStatus">
         update user set status=#{status} where id=#{id}

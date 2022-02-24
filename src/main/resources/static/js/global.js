@@ -1,3 +1,6 @@
+//网站名称（根路径）
+var MY_PATH = "/community"
+
 window.alert = function(message) {
 	if(!$(".alert-box").length) {
 		$("body").append(
@@ -26,7 +29,7 @@ window.alert = function(message) {
 	var y = h / 2 - 100;
 	if(h > 600) y -= 100;
     $(".alert-box .modal-dialog").css("margin", (y < 0 ? 0 : y) + "px auto");
-	
+
 	$(".alert-box .modal-body p").text(message);
 	$(".alert-box").modal("show");
 }

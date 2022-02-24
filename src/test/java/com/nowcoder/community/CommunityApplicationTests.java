@@ -32,6 +32,8 @@ public class CommunityApplicationTests{
 		Map<Integer, Integer> map = new HashMap<>();
 		Set<Map.Entry<Integer, Integer>> entries = map.entrySet();
 		List<Integer> list = new ArrayList<>();
+		int a = 7;
+		double sqrt = Math.sqrt(a + 0.0);
 		list.toString();
 		System.out.println(user);
 	}
